@@ -20,7 +20,21 @@ function checkWinner() {
     } else {
       console.log("The game is a tie!");
     }
+    playAgain()
   }
+}
+
+function playAgain() {
+    if (roundCounter == 4) {
+        let replay = window.prompt("Do you want to play again? Type 'Yes' or 'No'").toLowerCase()
+        if (replay === "yes") {
+            humanScore = 0;
+            computerScore = 0;
+            return playGame()
+        } else {
+            console.log("Thanks for playing!")
+        }
+    }
 }
 
 let humanScore = 0;
