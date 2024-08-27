@@ -4,16 +4,16 @@ let computerSelection = function getComputerChoice() {
   console.log(rps[rand]);
   if (rand === 0) {
     let img = document.querySelector("#pcIMG");
-    img.setAttribute("src", "../images/rock.png");
+    img.setAttribute("src", "/images/rock.png");
   } else if (rand === 1) {
     let img = document.querySelector("#pcIMG");
-    img.setAttribute("src", "../images/paper.png");
+    img.setAttribute("src", "/images/paper.png");
   } else if (rand === 2) {
     let img = document.querySelector("#pcIMG");
-    img.setAttribute("src", "../images/scissors.png");
+    img.setAttribute("src", "/images/scissors.png");
   } else {
     let img = document.querySelector("#pcIMG");
-    img.setAttribute("src", "../images/Question_mark_(black).svg.webp");
+    img.setAttribute("src", "/images/Question_mark_(black).svg.webp");
   }
   return rps[rand];
 };
