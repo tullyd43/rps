@@ -46,9 +46,9 @@ function playAgain() {
       humanScore = 0;
       computerScore = 0;
       let img = document.querySelector("#humanIMG");
-      img.setAttribute("src", "../images/Question_mark_(black).svg.webp");
+      img.setAttribute("src", "./images/Question_mark_(black).svg.webp");
       let img2 = document.querySelector("#pcIMG");
-      img2.setAttribute("src", "../images/Question_mark_(black).svg.webp");
+      img2.setAttribute("src", "./images/Question_mark_(black).svg.webp");
       scoreUpdater();
     } else {
       console.log("Thanks for playing!");
@@ -74,21 +74,21 @@ function scoreUpdater() {
 
 btnSel[0].addEventListener("click", () => {
   let img = document.querySelector("#humanIMG");
-  img.setAttribute("src", "../images/rock.png");
+  img.setAttribute("src", "./images/rock.png");
   playRound(rock, computerSelection());
   scoreUpdater();
   checkWinner();
 });
 btnSel[1].addEventListener("click", () => {
   let img = document.querySelector("#humanIMG");
-  img.setAttribute("src", "../images/paper.png");
+  img.setAttribute("src", "./images/paper.png");
   playRound(paper, computerSelection());
   scoreUpdater();
   checkWinner();
 });
 btnSel[2].addEventListener("click", () => {
   let img = document.querySelector("#humanIMG");
-  img.setAttribute("src", "../images/scissors.png");
+  img.setAttribute("src", "./images/scissors.png");
   playRound(scissors, computerSelection());
   scoreUpdater();
   checkWinner();
