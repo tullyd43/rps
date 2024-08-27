@@ -2,67 +2,114 @@ let computerSelection = function getComputerChoice() {
   let rps = new Array("rock", "paper", "scissors");
   let rand = Math.floor(Math.random() * 3);
   console.log(rps[rand]);
+  if (rand === 0) {
+    let img = document.querySelector("#pcIMG");
+    img.setAttribute("src", "../images/rock.png");
+  } else if (rand === 1) {
+    let img = document.querySelector("#pcIMG");
+    img.setAttribute("src", "../images/paper.png");
+  } else if (rand === 2) {
+    let img = document.querySelector("#pcIMG");
+    img.setAttribute("src", "../images/scissors.png");
+  } else {
+    let img = document.querySelector("#pcIMG");
+    img.setAttribute("src", "../images/Question_mark_(black).svg.webp");
+  }
   return rps[rand];
 };
-
-let humanSelection = function getHumanChoice() {
-  let choice = window.prompt("Enter your play");
-  console.log(choice);
-  return choice.toLowerCase();
-};
-
 function checkWinner() {
-  if (roundCounter == 4) {
+  if (humanScore === 5 || computerScore === 5) {
     if (humanScore > computerScore) {
       console.log("Human Wins!");
+      scoreUpdater();
     } else if (computerScore > humanScore) {
       console.log("Computer Wins!");
-    } else {
+      scoreUpdater();
+    } else if (humanScore === computerScore) {
       console.log("The game is a tie!");
+      scoreUpdater();
+    } else {
+      console.log("Play another round!");
+      scoreUpdater();
     }
-    playAgain()
   }
+  scoreUpdater();
+  playAgain();
 }
 
 function playAgain() {
-    if (roundCounter == 4) {
-        let replay = window.prompt("Do you want to play again? Type 'Yes' or 'No'").toLowerCase()
-        if (replay === "yes") {
-            humanScore = 0;
-            computerScore = 0;
-            return playGame()
-        } else {
-            console.log("Thanks for playing!")
-        }
+  if (humanScore === 5 || computerScore === 5) {
+    let replay = window
+      .prompt("Do you want to play again? Type 'Yes' or 'No'")
+      .toLowerCase();
+    if (replay === "yes") {
+      humanScore = 0;
+      computerScore = 0;
+      let img = document.querySelector("#humanIMG");
+      img.setAttribute("src", "../images/Question_mark_(black).svg.webp");
+      let img2 = document.querySelector("#pcIMG");
+      img2.setAttribute("src", "../images/Question_mark_(black).svg.webp");
+      scoreUpdater();
+    } else {
+      console.log("Thanks for playing!");
     }
-}
-
-let humanScore = 0;
-let computerScore = 0;
-let roundCounter;
-function playGame() {
-  for (roundCounter = 0; roundCounter < 5; roundCounter++) {
-    console.log(roundCounter);
-    function playRound(humanChoice, computerChoice) {
-      if (humanChoice === "scissors" && computerChoice === "paper") {
-        humanScore++;
-        return console.log("Human won this round!");
-      } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        humanScore++;
-        return console.log("Human won this round!");
-      } else if (humanChoice === "paper" && computerChoice === "rock") {
-        humanScore++;
-        return console.log("Human won this round!");
-      } else if (humanChoice === computerChoice) {
-        return console.log("This round was a draw, play again!");
-      } else {
-        computerScore++;
-        return console.log("Computer won this round");
-      }
-    }
-    playRound(humanSelection(), computerSelection());
-    checkWinner();
   }
 }
 
-playGame();
+let btnSel = document.querySelectorAll(".selection");
+console.log(btnSel);
+
+let rock = "rock";
+let paper = "paper";
+let scissors = "scissors";
+
+function scoreUpdater() {
+  let humSco = document.querySelector("#human-score");
+  let humScoString = humanScore.toString();
+  humSco.textContent = humScoString;
+  let pcSco = document.querySelector("#pc-score");
+  let pcScoString = computerScore.toString();
+  pcSco.textContent = pcScoString;
+}
+
+btnSel[0].addEventListener("click", () => {
+  let img = document.querySelector("#humanIMG");
+  img.setAttribute("src", "../images/rock.png");
+  playRound(rock, computerSelection());
+  scoreUpdater();
+  checkWinner();
+});
+btnSel[1].addEventListener("click", () => {
+  let img = document.querySelector("#humanIMG");
+  img.setAttribute("src", "../images/paper.png");
+  playRound(paper, computerSelection());
+  scoreUpdater();
+  checkWinner();
+});
+btnSel[2].addEventListener("click", () => {
+  let img = document.querySelector("#humanIMG");
+  img.setAttribute("src", "../images/scissors.png");
+  playRound(scissors, computerSelection());
+  scoreUpdater();
+  checkWinner();
+});
+
+let humanScore = 0;
+let computerScore = 0;
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === "scissors" && computerChoice === "paper") {
+    humanScore++;
+    return console.log("Human won this round!");
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    humanScore++;
+    return console.log("Human won this round!");
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    humanScore++;
+    return console.log("Human won this round!");
+  } else if (humanChoice === computerChoice) {
+    return console.log("This round was a draw, play again!");
+  } else {
+    computerScore++;
+    return console.log("Computer won this round");
+  }
+}

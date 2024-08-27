@@ -4,10 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width", initial-scale=1.0">
     <title>Document</title>
-    <script src="scripts/scripts.js"></script>
-    <iframe src="" frameborder="0"></iframe>
+    <script defer src="scripts/scripts.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+
+    <div class="players">
+        <div class="player-tile">
+            <h1 class="player">Human</h3>
+            <h3 class="counter" id="human-score">0</h3>
+            <img id="humanIMG" src="images/Question_mark_(black).svg.webp" alt="">
+            <!-- <h2 class="winlose">Winner</h2> -->
+        </div>
+        <div class="versus">
+            <h2>Vs.</h2>
+        </div>
+        <div class="player-tile">
+            <h1 class="player">Computer</h3>
+            <h3 class="counter" id="pc-score">0</h3>
+            <img id="pcIMG" src="images/Question_mark_(black).svg.webp" alt="">
+            <!-- <h2 class="winlose">Loser</h2> -->
+        </div>
+    </div>
+    <div class="choice-container">
+        <button class="selection" id="rock">Rock</button>
+        <button class="selection" id="paper">Paper</button>
+        <button class="selection" id="scissors">Scissors</button>
+    </div>
+
 
 </body>
 </html>
